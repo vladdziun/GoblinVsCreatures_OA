@@ -55,9 +55,11 @@ public class Player : MonoBehaviour
             gameManager.UpdateCount();
             gameObject.GetComponent<PlayerStatistic>().GoblinsCaptured++;
 
-            if (botLogic != null)
+            var botLogicScript = col.gameObject.GetComponent<BotLogic>();
+            if (botLogicScript != null)
             {
-                botLogic.FindNextTarget();
+                col.gameObject.GetComponent<BotLogic>().FindNextTarget();
+
             }
         }
     }

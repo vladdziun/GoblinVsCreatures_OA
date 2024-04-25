@@ -5,6 +5,7 @@ using UnityEngine;
 public class BagScript : MonoBehaviour
 {
     public GameManager gameManager;
+    private BotLogic botLogic;
 
     void Start()
     {
@@ -25,6 +26,14 @@ public class BagScript : MonoBehaviour
             gameManager.UpdateCount();
             col.gameObject.GetComponent<PlayerStatistic>().BagsCollected++;
             Destroy(gameObject);
+            var botLogicScript = col.gameObject.GetComponent<BotLogic>();
+            if (botLogicScript != null)
+            {
+                col.gameObject.GetComponent<BotLogic>().findnNextBag();
+
+            }
         }
     }
+
+
 }

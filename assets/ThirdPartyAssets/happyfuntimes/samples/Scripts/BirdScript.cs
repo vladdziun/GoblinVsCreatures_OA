@@ -44,6 +44,7 @@ public class BirdScript : MonoBehaviour
     public Transform nameTransform;
     public bool deleteWhenDisconnected = true;
     public GameManager gameManager;
+    public bool isBot;
 
     // this is the base color of the avatar.
     // we need to know it because we need to know what color
@@ -168,7 +169,9 @@ public class BirdScript : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    { 
+    {
+        if (isBot)
+            return;
         if(GameManager.isGameStarted)
         {
             // Check if the center under us is touching the ground and

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1748930392571977178}
   - component: {fileID: 1748930392571977179}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: KeyIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1748930392642103942}
   - component: {fileID: 1748930392642103943}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShovelIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1748930392910229453}
   - component: {fileID: 1748930392910229454}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 8351094370989725961}
   - component: {fileID: 6191767369335367866}
   - component: {fileID: 3371181445843091560}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BotSlimePrefab
   m_TagString: PlayerTeam0
   m_Icon: {fileID: 0}
@@ -476,6 +476,7 @@ MonoBehaviour:
   nameTransform: {fileID: 1748930394147012897}
   deleteWhenDisconnected: 1
   gameManager: {fileID: 0}
+  isBot: 1
   baseColor: {r: 0, g: 0.59607846, b: 0.8000001, a: 1}
 --- !u!114 &1748930393144004824
 MonoBehaviour:
@@ -579,7 +580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a677d755f192f84eb2da89362a28d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColor: {r: 0, g: 0, b: 0, a: 0}
+  PlayerColor: {r: 0, g: 0.9327655, b: 1, a: 0}
   GoblinsCaptured: 0
   BagsCollected: 0
 --- !u!114 &3083961211307338416
@@ -623,10 +624,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 0.28
+  radius: 0.39
   height: 1.93
   canMove: 0
-  maxSpeed: 1.43
+  maxSpeed: 1.5
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -652,6 +653,7 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
+  hSpeed: 0
 --- !u!114 &6191767369335367866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -688,7 +690,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1748930394011260079}
   - component: {fileID: 1748930394011260072}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpeedUpIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -771,7 +773,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1748930394147012897}
-  m_Layer: 14
+  m_Layer: 8
   m_Name: NamePosition
   m_TagString: Untagged
   m_Icon: {fileID: 1182211791, guid: 0000000000000000d000000000000000, type: 0}
@@ -802,7 +804,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1748930394301993857}
-  m_Layer: 14
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: -1500306622, guid: 0000000000000000d000000000000000, type: 0}

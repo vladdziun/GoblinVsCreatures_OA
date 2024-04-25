@@ -161,11 +161,15 @@ namespace Pathfinding {
 
 		/// <summary>Helper which calculates points along the current path</summary>
 		protected PathInterpolator interpolator = new PathInterpolator();
+        private Animator m_animator;
+        private bool m_facingRight = true;
+		public float hSpeed;
 
-		#region IAstarAI implementation
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::Teleport</summary>
-		public override void Teleport (Vector3 newPosition, bool clearPath = true) {
+        #region IAstarAI implementation
+
+        /// <summary>\copydoc Pathfinding::IAstarAI::Teleport</summary>
+        public override void Teleport (Vector3 newPosition, bool clearPath = true) {
 			reachedEndOfPath = false;
 			base.Teleport(newPosition, clearPath);
 		}
@@ -393,7 +397,28 @@ namespace Pathfinding {
 
 			velocity2D = MovementUtilities.ClampVelocity(velocity2D, maxSpeed, slowdown, slowWhenNotFacingTarget && enableRotation, forwards);
 
-			ApplyGravity(deltaTime);
+            float hSpeed = velocity2D.x;
+            float vSpeed = velocity2D.y;
+
+            // Set animator parameters
+            m_animator = gameObject.GetComponent<Animator>();
+
+            //Debug.Log("hSpeed " + hSpeed + ", " + vSpeed);
+
+            m_animator.SetFloat("Speed", Mathf.Abs(hSpeed));
+            m_animator.SetFloat("vSpeed", vSpeed);
+
+            // Flip character based on horizontal movement
+            if (hSpeed > 0 && !m_facingRight)
+            {
+                Flip();
+            }
+            else if (hSpeed < 0 && m_facingRight)
+            {
+                Flip();
+            }
+
+            ApplyGravity(deltaTime);
 
 
 			// Set how much the agent wants to move during this frame
@@ -402,7 +427,15 @@ namespace Pathfinding {
 			CalculateNextRotation(slowdown, out nextRotation);
 		}
 
-		protected virtual void CalculateNextRotation (float slowdown, out Quaternion nextRotation) {
+        void Flip()
+        {
+            m_facingRight = !m_facingRight;
+            Vector3 theScale = transform.localScale;
+            theScale.x *= -1;
+            transform.localScale = theScale;
+        }
+
+        protected virtual void CalculateNextRotation (float slowdown, out Quaternion nextRotation) {
 			if (lastDeltaTime > 0.00001f && enableRotation) {
 				Vector2 desiredRotationDirection;
 				desiredRotationDirection = velocity2D;

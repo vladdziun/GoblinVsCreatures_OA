@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public GameObject winCanvas;
     public Vector2 winnerCoordiantes;
 
+    private BotLogic botLogic;
+
     void Awake()
     {
         //Check if instance already exists
@@ -130,6 +132,8 @@ public class GameManager : MonoBehaviour
         isGameStarted = true;
         startGameCanvas.GetComponent<Canvas>().enabled = false;
         mainGameCanvas.GetComponent<Canvas>().enabled = true;
+        botLogic.FindNextTarget();
+        botLogic.findnNextBag();
     }
 
 
